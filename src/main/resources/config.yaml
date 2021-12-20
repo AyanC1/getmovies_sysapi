@@ -1,0 +1,7 @@
+http.port : "8081"
+db :
+  host : "db4free.net"
+  port : "3306"
+  user : "ayanc1"
+  password : "luckyTHIRTEEN"
+  database : "movies_bms"

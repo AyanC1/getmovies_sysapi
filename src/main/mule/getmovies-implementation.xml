@@ -6,10 +6,10 @@
 http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
 	<db:config name="Database_Config" doc:name="Database Config" doc:id="a669d327-42e4-4f61-806d-3bf5d4461fee" >
-		<db:my-sql-connection host="db4free.net" port="3306" user="ayanc1" password="luckyTHIRTEEN" database="movies_bms" />
+		<db:my-sql-connection host="${db.host}" port="${db.port}" user="${db.user}" password="luckyTHIRTEEN" database="${db.database}" />
 	</db:config>
 	<db:config name="Database_Config1" doc:name="Database Config" doc:id="7815e67e-ea0f-4206-a0ea-71f9ee5d3dd1" >
-		<db:my-sql-connection host="db4free.net" port="3306" user="ayanc1" password="luckyTHIRTEEN" database="movies_bms" />
+		<db:my-sql-connection host="${db.host}" port="${db.port}" user="${db.user}" password="luckyTHIRTEEN" database="${db.database}" />
 	</db:config>
 	<flow name="getmovies-implementationFlow" doc:id="6a28c581-1b49-4fe9-aa13-757fcc909809" >
 		<logger level="INFO" doc:name="Initial Logger" doc:id="7e288dd7-d103-444d-b17c-7014e594160f" message="#[payload]"/>
