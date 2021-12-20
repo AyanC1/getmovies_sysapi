@@ -1,0 +1,43 @@
+#%RAML 1.0
+title: getmovies
+types:
+  moviesList: !include schemas/moviesType.raml
+
+traits:
+  client-id-required:
+    headers:
+      client_id:
+        type: string
+        required: true
+      client_secret:
+        type: string
+        required: true
+    responses:
+      401:
+        description: Unauthorized or invalid client application credentials
+      500:
+        description: Bad response from authorization server 
+
+/movies:
+  get:
+    is: [client-id-required]
+    description: Get all Movies
+    responses:
+      200:
+        body:
+          application/json:
+            type: moviesList[]
+  /{movie}:
+    get:
+      is: [client-id-required]
+      description: Get one Movie
+      responses:
+        200:
+          body:
+            application/json:
+              type: moviesList[]
+        404:
+          description: Movie Name not found
+          body:
+            application/json:
+              example: "Movie not found"

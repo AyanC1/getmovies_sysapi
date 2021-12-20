@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:db="http://www.mulesoft.org/schema/mule/db"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<db:config name="Database_Config" doc:name="Database Config" doc:id="a669d327-42e4-4f61-806d-3bf5d4461fee" >
+		<db:my-sql-connection host="db4free.net" port="3306" user="ayanc1" password="luckyTHIRTEEN" database="movies_bms" />
+	</db:config>
+	<db:config name="Database_Config1" doc:name="Database Config" doc:id="7815e67e-ea0f-4206-a0ea-71f9ee5d3dd1" >
+		<db:my-sql-connection host="db4free.net" port="3306" user="ayanc1" password="luckyTHIRTEEN" database="movies_bms" />
+	</db:config>
+	<flow name="getmovies-implementationFlow" doc:id="6a28c581-1b49-4fe9-aa13-757fcc909809" >
+		<logger level="INFO" doc:name="Initial Logger" doc:id="7e288dd7-d103-444d-b17c-7014e594160f" message="#[payload]"/>
+		<db:select doc:name="Select" doc:id="ff9fe680-d2db-42f8-a00d-c3e65d886fa2" config-ref="Database_Config">
+			<db:sql ><![CDATA[Select * from movieshows]]></db:sql>
+		</db:select>
+		<logger level="INFO" doc:name="Final Logger" doc:id="286c1f37-1687-42b8-98b5-72bb444974c1" message="#[payload]"/>
+	</flow>
+	<flow name="getmovies-implementationFlow1" doc:id="ae3a310d-19f3-4b84-ba78-dcac93846abb" >
+		<logger level="INFO" doc:name="Initial Logger" doc:id="949ad37b-eb39-46fd-91db-91597b7b8134" message="#[payload]"/>
+		<db:select doc:name="Select" doc:id="5ad4ca2e-a585-4b68-ba87-fad8b2fa34b6" config-ref="Database_Config1">
+			<db:sql ><![CDATA[Select * from movieshows where MovieName= :MovieName]]></db:sql>
+			<db:input-parameters ><![CDATA[#[{
+	MovieName: attributes.uriParams.movie
+}]]]></db:input-parameters>
+		</db:select>
+		<logger level="INFO" doc:name="Final Logger" doc:id="53af39c1-d093-4492-88aa-8d2f74c4f04c" message="#[payload]"/>
+	</flow>
+</mule>
