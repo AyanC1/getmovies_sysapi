@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="getmovies-implementation-test-suite.xml" />
+	<munit:test name="getmovies-implementation-test-suite-getmovies-implementationFlow1Test" doc:id="c85abd4b-3bf4-4612-827c-6ab534b92103" description="Test">
+		<munit:behavior >
+			<munit:set-event doc:name="Set Event" doc:id="d3612c10-a16b-4fac-ae04-d3556933ee05" >
+				<munit:attributes value="#[{ uriParams: { 'movie' :  'Eternals'}}]" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to getmovies-implementationFlow1" doc:id="de316cf9-215d-4e18-a77c-ef3939609cdf" name="getmovies-implementationFlow1"/>
+		</munit:execution>
+		<munit:validation>
+			<munit-tools:assert-that doc:name="Assert that" doc:id="24d10612-99fb-476b-8113-ed873750ae1a" message="Payload is not null" expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
