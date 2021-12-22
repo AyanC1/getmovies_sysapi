@@ -1,7 +1,7 @@
-http.port : "8081"
+http.port : "8083"
 db :
   host : "db4free.net"
   port : "3306"
   user : "ayanc1"
-  password : "luckyTHIRTEEN"
+  password : "![Z5B4Rdpe6BRVdt40SGJ29Q==]"
   database : "movies_bms"
