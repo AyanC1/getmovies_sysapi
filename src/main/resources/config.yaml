@@ -1,4 +1,4 @@
-http.port : "8083"
+https.port : "8082"
 db :
   host : "db4free.net"
   port : "3306"
