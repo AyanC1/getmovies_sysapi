@@ -1,7 +1,7 @@
 #%RAML 1.0
 title: getmovies
 types:
-  moviesList: !include schemas/moviesType.raml
+  MoviesList: !include schemas/MoviesType.raml
 
 traits:
   client-id-required:
@@ -26,7 +26,7 @@ traits:
       200:
         body:
           application/json:
-            type: moviesList[]
+            type: MoviesList[]
   /{movie}:
     get:
       is: [client-id-required]
@@ -35,7 +35,7 @@ traits:
         200:
           body:
             application/json:
-              type: moviesList[]
+              type: MoviesList[]
         404:
           description: Movie Name not found
           body:
